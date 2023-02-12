@@ -9,9 +9,9 @@ export const resolvers = {
         users: async () => User.findAll(),
     },
     Mutation: {
-        createJob: async (_, { job }) => {
-            return Job.create(job);
-        },
+        createJob: async (_, { job }) => Job.create(job),
+        deleteJob: async (_, { id }) => Job.delete(id),
+        updateJob: async (_, { job }) => Job.update(job),
     },
     Job: {
         company: async (job) => Company.findById(job.companyId),

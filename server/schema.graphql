@@ -27,12 +27,21 @@ type User {
     companyId: ID,
 }
 
-input CreateJobInput {
+input JobInput {
     title: String!,
     description: String,
     companyId: ID!,
 }
 
+input JobUpdateInput {
+    id: ID!
+    title: String!,
+    description: String!,
+    companyId: ID!,
+}
+
 type Mutation {
-    createJob(job: CreateJobInput!): Job!
+    createJob(job: JobInput!): Job!
+    deleteJob(id: ID!): Job!
+    updateJob(job: JobUpdateInput!): Job!
 }
