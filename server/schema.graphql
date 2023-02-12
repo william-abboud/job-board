@@ -26,3 +26,13 @@ type User {
     password: String!,
     companyId: ID,
 }
+
+input CreateJobInput {
+    title: String!,
+    description: String,
+    companyId: ID!,
+}
+
+type Mutation {
+    createJob(job: CreateJobInput!): Job!
+}

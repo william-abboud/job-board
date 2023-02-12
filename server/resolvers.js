@@ -8,10 +8,15 @@ export const resolvers = {
         companies: async () => Company.findAll(),
         users: async () => User.findAll(),
     },
+    Mutation: {
+        createJob: async (_, { job }) => {
+            return Job.create(job);
+        },
+    },
     Job: {
         company: async (job) => Company.findById(job.companyId),
     },
     Company: {
         jobs: async (company) => Job.findAll(job => job.companyId === company.id),
-    }
+    },
 };
