@@ -1,11 +1,14 @@
+import { Job, Company, User } from './db.js';
+
 export const resolvers = {
     Query: {
-        jobs: async () => [
-            {
-                id: 'id1',
-                title: 'Software Engineer',
-                description: 'Build cool stuff',
-            }
-        ],
-    }
+        company: (_, { id }) => Company.findById(id),
+        job: (_, { id }) => Job.findById(id),
+        jobs: async () => Job.findAll(),
+        companies: async () => Company.findAll(),
+        users: async () => User.findAll(),
+    },
+    Job: {
+        company: async (job) => Company.findById(job.companyId),
+    },
 };
